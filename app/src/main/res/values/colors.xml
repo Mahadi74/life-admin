@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Splash Screen -->
+    <color name="splash_background">#F8F9FE</color>
+    
+    <!-- Status Colors (for reference, actual colors defined in Compose theme) -->
+    <color name="status_overdue">#DC362E</color>
+    <color name="status_due_today">#FF6B35</color>
+    <color name="status_due_soon">#FFA726</color>
+    <color name="status_upcoming">#00A884</color>
+    <color name="status_completed">#66BB6A</color>
+</resources>

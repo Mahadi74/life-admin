@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Life Admin</string>
+    <string name="app_tagline">Never forget what matters</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Common Actions -->
+    <string name="action_add">Add</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_complete">Complete</string>
+    <string name="action_archive">Archive</string>
+    <string name="action_snooze">Snooze</string>
+    <string name="action_duplicate">Duplicate</string>
+    
+    <!-- Greetings -->
+    <string name="greeting_night">Good night 🌙</string>
+    <string name="greeting_morning">Good morning ☀️</string>
+    <string name="greeting_afternoon">Good afternoon 👋</string>
+    <string name="greeting_evening">Good evening 🌆</string>
+    
+    <!-- Home Screen -->
+    <string name="section_overdue">OVERDUE</string>
+    <string name="section_today">TODAY</string>
+    <string name="section_tomorrow">TOMORROW</string>
+    <string name="section_this_week">THIS WEEK</string>
+    <string name="section_next_week">NEXT WEEK</string>
+    <string name="section_upcoming">UPCOMING</string>
+    <string name="section_later">LATER</string>
+    
+    <!-- Empty States -->
+    <string name="empty_first_launch_title">Welcome to Life Admin</string>
+    <string name="empty_first_launch_message">Your personal reminder companion. Let\'s add your first reminder.</string>
+    <string name="empty_first_launch_action">Add Your First Reminder</string>
+    
+    <string name="empty_all_caught_up_title">You\'re all caught up! 🎉</string>
+    <string name="empty_all_caught_up_message">Nothing needs your attention right now.</string>
+    
+    <string name="empty_no_upcoming_title">Nothing coming up</string>
+    <string name="empty_no_upcoming_message">Your schedule is clear.</string>
+    
+    <string name="empty_search_title">No matches found</string>
+    <string name="empty_search_message">Try different keywords or browse categories</string>
+    
+    <!-- Item Types -->
+    <string name="type_reminder">Reminder</string>
+    <string name="type_bill">Bill</string>
+    <string name="type_subscription">Subscription</string>
+    <string name="type_warranty">Warranty</string>
+    <string name="type_return_deadline">Return Deadline</string>
+    <string name="type_document">Document</string>
+    <string name="type_appointment">Appointment</string>
+    <string name="type_renewal">Renewal</string>
+    <string name="type_task">Task</string>
+    <string name="type_custom">Custom</string>
+    
+    <!-- Categories -->
+    <string name="category_bills">Bills</string>
+    <string name="category_subscriptions">Subscriptions</string>
+    <string name="category_documents">Documents</string>
+    <string name="category_warranty">Warranty</string>
+    <string name="category_health">Health</string>
+    <string name="category_finance">Finance</string>
+    <string name="category_home">Home</string>
+    <string name="category_vehicle">Vehicle</string>
+    <string name="category_travel">Travel</string>
+    <string name="category_work">Work</string>
+    <string name="category_family">Family</string>
+    <string name="category_shopping">Shopping</string>
+    <string name="category_other">Other</string>
+    
+    <!-- Recurrence -->
+    <string name="recurrence_none">One-time</string>
+    <string name="recurrence_daily">Daily</string>
+    <string name="recurrence_weekly">Weekly</string>
+    <string name="recurrence_monthly">Monthly</string>
+    <string name="recurrence_yearly">Yearly</string>
+    <string name="recurrence_custom">Custom</string>
+    
+    <!-- Reminder Offsets -->
+    <string name="reminder_at_time">At time of event</string>
+    <string name="reminder_5_min">5 minutes before</string>
+    <string name="reminder_15_min">15 minutes before</string>
+    <string name="reminder_1_hour">1 hour before</string>
+    <string name="reminder_1_day">1 day before</string>
+    <string name="reminder_3_days">3 days before</string>
+    <string name="reminder_1_week">1 week before</string>
+    <string name="reminder_1_month">30 days before</string>
+    
+    <!-- Date/Time -->
+    <string name="date_today">Today</string>
+    <string name="date_tomorrow">Tomorrow</string>
+    <string name="date_yesterday">Yesterday</string>
+    <string name="due_today">Due today</string>
+    <string name="due_tomorrow">Due tomorrow</string>
+    <string name="overdue">Overdue</string>
+    
+    <!-- Settings -->
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_preferences">Preferences</string>
+    <string name="settings_data">Data</string>
+    <string name="settings_about">About</string>
+    
+    <string name="setting_enable_notifications">Reminder Notifications</string>
+    <string name="setting_default_reminder">Default Reminder</string>
+    <string name="setting_theme">Theme</string>
+    <string name="setting_dark_mode">Dark Mode</string>
+    <string name="setting_currency">Currency</string>
+    <string name="setting_week_starts_on">Week Starts On</string>
+    <string name="setting_export_backup">Export Backup</string>
+    <string name="setting_import_backup">Import Backup</string>
+    <string name="setting_rate_app">Rate Life Admin</string>
+    <string name="setting_share_app">Share App</string>
+    <string name="setting_contact">Contact Support</string>
+    <string name="setting_version">Version</string>
+    
+    <!-- Theme Options -->
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    
+    <!-- Notifications -->
+    <string name="notification_channel_reminders_name">Reminders</string>
+    <string name="notification_channel_reminders_description">Notifications for upcoming reminders</string>
+    
+    <!-- Content Descriptions (Accessibility) -->
+    <string name="cd_add_reminder">Add new reminder</string>
+    <string name="cd_complete_reminder">Mark reminder as complete</string>
+    <string name="cd_delete_reminder">Delete reminder</string>
+    <string name="cd_edit_reminder">Edit reminder</string>
+    <string name="cd_back">Go back</string>
+    <string name="cd_more_options">More options</string>
+    
+    <!-- Errors -->
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_title_required">Title is required</string>
+    <string name="error_date_required">Date is required</string>
+    <string name="error_invalid_backup">Invalid backup file</string>
+    
+    <!-- Success Messages -->
+    <string name="success_reminder_created">Reminder created</string>
+    <string name="success_reminder_updated">Reminder updated</string>
+    <string name="success_reminder_completed">Reminder completed</string>
+    <string name="success_reminder_deleted">Reminder deleted</string>
+    <string name="success_backup_exported">Backup exported</string>
+    <string name="success_backup_imported">Backup imported</string>
+</resources>
