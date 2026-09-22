@@ -61,7 +61,7 @@ class NotificationWorker(
         
         // Build notification
         val notification = NotificationCompat.Builder(applicationContext, NotificationChannels.CHANNEL_REMINDERS)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(title)
             .setContentText(if (description.isNotBlank()) description else "Due soon")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)

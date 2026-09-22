@@ -1,7 +1,9 @@
 package com.lifeadmin.app.features.settings
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.lifeadmin.app.core.util.ErrorHandler
 import com.lifeadmin.app.domain.model.ImportStrategy
 import com.lifeadmin.app.domain.usecase.BackupRestoreUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,6 +16,7 @@ import kotlinx.coroutines.launch
  * ViewModel for settings screen
  */
 class SettingsViewModel(
+    private val context: Context,
     private val backupRestoreUseCase: BackupRestoreUseCase
 ) : ViewModel() {
     
@@ -39,7 +42,7 @@ class SettingsViewModel(
                     _uiState.update {
                         it.copy(
                             isExporting = false,
-                            error = "Export failed: ${error.message}"
+                            error = ErrorHandler.getUserMessage(context, error)
                         )
                     }
                 }
@@ -65,7 +68,7 @@ class SettingsViewModel(
                 onFailure = { error ->
                     _uiState.update {
                         it.copy(
-                            error = "Invalid backup file: ${error.message}"
+                            error = ErrorHandler.getUserMessage(context, error)
                         )
                     }
                 }
@@ -103,7 +106,7 @@ class SettingsViewModel(
                     _uiState.update {
                         it.copy(
                             isImporting = false,
-                            error = "Import failed: ${error.message}"
+                            error = ErrorHandler.getUserMessage(context, error)
                         )
                     }
                 }

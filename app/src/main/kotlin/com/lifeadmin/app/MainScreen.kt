@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -66,8 +67,10 @@ fun MainScreen() {
             }
             composable(BottomNavItem.Settings.route) {
                 val appContainer = com.lifeadmin.app.core.util.rememberAppContainer()
+                val context = LocalContext.current
                 val settingsViewModel = remember {
                     com.lifeadmin.app.features.settings.SettingsViewModel(
+                        context = context,
                         backupRestoreUseCase = appContainer.backupRestoreUseCase
                     )
                 }

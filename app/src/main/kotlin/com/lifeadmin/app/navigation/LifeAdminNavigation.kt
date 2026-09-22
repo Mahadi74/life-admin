@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -76,8 +77,10 @@ fun LifeAdminNavigation(
         
         composable(Screen.Settings.route) {
             val appContainer = rememberAppContainer()
+            val context = LocalContext.current
             val viewModel = remember {
                 SettingsViewModel(
+                    context = context,
                     backupRestoreUseCase = appContainer.backupRestoreUseCase
                 )
             }

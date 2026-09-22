@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -38,6 +39,7 @@ import com.lifeadmin.app.ui.theme.Spacing
 fun HomeScreen(
     navController: NavController,
     viewModel: HomeViewModel = HomeViewModel(
+        context = LocalContext.current,
         reminderRepository = rememberAppContainer().reminderRepository,
         completeReminderUseCase = rememberAppContainer().completeReminderUseCase
     )

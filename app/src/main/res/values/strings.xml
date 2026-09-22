@@ -143,7 +143,14 @@
     <string name="error_generic">Something went wrong. Please try again.</string>
     <string name="error_title_required">Title is required</string>
     <string name="error_date_required">Date is required</string>
-    <string name="error_invalid_backup">Invalid backup file</string>
+    <string name="error_database">Unable to access database. Please restart the app.</string>
+    <string name="error_file_access">Unable to access file. Please check permissions.</string>
+    <string name="error_network">No internet connection. Please check your network.</string>
+    <string name="error_backup_not_found">Backup file not found. Please select a valid backup.</string>
+    <string name="error_backup_version">This backup is from a newer version. Please update the app.</string>
+    <string name="error_backup_invalid">Invalid backup file. Please select a valid backup.</string>
+    <string name="error_notification_permission">Notification permission is required to receive reminders.</string>
+    <string name="error_storage_permission">Storage permission is required to backup data.</string>
     
     <!-- Success Messages -->
     <string name="success_reminder_created">Reminder created</string>

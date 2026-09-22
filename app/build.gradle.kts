@@ -5,6 +5,9 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization")
 }
 
+import java.util.Properties
+import java.io.FileInputStream
+
 android {
     namespace = "com.lifeadmin.app"
     compileSdk = 34
@@ -25,6 +28,24 @@ android {
         // Room schema export
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
+    
+    signingConfigs {
+        create("release") {
+            // These should be configured via keystore.properties or environment variables
+            // Never commit keystore credentials to version control!
+            
+            val keystorePropertiesFile = rootProject.file("keystore.properties")
+            if (keystorePropertiesFile.exists()) {
+                val keystoreProperties = Properties()
+                keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+                
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+            }
         }
     }
 
@@ -51,7 +72,13 @@ android {
             buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"ca-app-pub-3940256099942544/1033173712\"")
             buildConfigField("Boolean", "ADS_ENABLED", "true")
             
-            signingConfig = signingConfigs.getByName("debug") // TODO: Configure release signing
+            // Use release signing config if keystore.properties exists, otherwise use debug
+            val keystorePropertiesFile = rootProject.file("keystore.properties")
+            signingConfig = if (keystorePropertiesFile.exists()) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
     

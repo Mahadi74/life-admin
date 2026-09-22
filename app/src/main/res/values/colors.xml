@@ -3,6 +3,9 @@
     <!-- Splash Screen -->
     <color name="splash_background">#F8F9FE</color>
     
+    <!-- App Icon -->
+    <color name="ic_launcher_background">#6366F1</color>
+    
     <!-- Status Colors (for reference, actual colors defined in Compose theme) -->
     <color name="status_overdue">#DC362E</color>
     <color name="status_due_today">#FF6B35</color>

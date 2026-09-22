@@ -1,6 +1,9 @@
 package com.lifeadmin.app.domain.usecase
 
 import android.content.Context
+import com.lifeadmin.app.core.util.BackupFileNotFoundException
+import com.lifeadmin.app.core.util.BackupVersionMismatchException
+import com.lifeadmin.app.core.util.InvalidBackupFormatException
 import com.lifeadmin.app.domain.model.*
 import com.lifeadmin.app.domain.repository.CategoryRepository
 import com.lifeadmin.app.domain.repository.ReminderRepository
@@ -52,6 +55,7 @@ class BackupRestoreUseCase(
             
             Result.success(file.absolutePath)
         } catch (e: Exception) {
+            android.util.Log.e("BackupRestore", "Export failed", e)
             Result.failure(e)
         }
     }
@@ -67,19 +71,22 @@ class BackupRestoreUseCase(
             // Read file
             val file = File(filePath)
             if (!file.exists()) {
-                return Result.failure(Exception("Backup file not found"))
+                return Result.failure(BackupFileNotFoundException())
             }
             
             val jsonString = file.readText()
             
             // Parse JSON
-            val backupData = json.decodeFromString<BackupData>(jsonString)
+            val backupData = try {
+                json.decodeFromString<BackupData>(jsonString)
+            } catch (e: Exception) {
+                android.util.Log.e("BackupRestore", "Invalid backup format", e)
+                return Result.failure(InvalidBackupFormatException())
+            }
             
             // Validate version
             if (backupData.version > BackupData.CURRENT_VERSION) {
-                return Result.failure(
-                    Exception("Backup file is from a newer version. Please update the app.")
-                )
+                return Result.failure(BackupVersionMismatchException())
             }
             
             // Clear existing data if REPLACE strategy
@@ -112,6 +119,7 @@ class BackupRestoreUseCase(
                 )
             )
         } catch (e: Exception) {
+            android.util.Log.e("BackupRestore", "Import failed", e)
             Result.failure(e)
         }
     }
@@ -123,20 +131,23 @@ class BackupRestoreUseCase(
         return try {
             val file = File(filePath)
             if (!file.exists()) {
-                return Result.failure(Exception("File not found"))
+                return Result.failure(BackupFileNotFoundException())
             }
             
             val jsonString = file.readText()
-            val backupData = json.decodeFromString<BackupData>(jsonString)
+            val backupData = try {
+                json.decodeFromString<BackupData>(jsonString)
+            } catch (e: Exception) {
+                return Result.failure(InvalidBackupFormatException())
+            }
             
             if (backupData.version > BackupData.CURRENT_VERSION) {
-                return Result.failure(
-                    Exception("Backup is from a newer app version")
-                )
+                return Result.failure(BackupVersionMismatchException())
             }
             
             Result.success(backupData)
         } catch (e: Exception) {
+            android.util.Log.e("BackupRestore", "Validation failed", e)
             Result.failure(e)
         }
     }

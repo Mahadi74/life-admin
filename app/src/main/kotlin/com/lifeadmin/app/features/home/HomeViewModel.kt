@@ -1,8 +1,10 @@
 package com.lifeadmin.app.features.home
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lifeadmin.app.core.util.DateUtils
+import com.lifeadmin.app.core.util.ErrorHandler
 import com.lifeadmin.app.domain.model.ReminderItem
 import com.lifeadmin.app.domain.repository.ReminderRepository
 import com.lifeadmin.app.domain.usecase.CompleteReminderUseCase
@@ -17,6 +19,7 @@ import java.time.format.DateTimeFormatter
  * Handles business logic and state management
  */
 class HomeViewModel(
+    private val context: Context,
     private val reminderRepository: ReminderRepository,
     private val completeReminderUseCase: CompleteReminderUseCase
 ) : ViewModel() {
@@ -65,7 +68,7 @@ class HomeViewModel(
                 }.catch { exception ->
                     _uiState.value = _uiState.value.copy(
                         isLoading = false,
-                        error = exception.message ?: "Unknown error occurred"
+                        error = ErrorHandler.getUserMessage(context, exception)
                     )
                 }.collect { state ->
                     _uiState.value = state
@@ -73,7 +76,7 @@ class HomeViewModel(
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(
                     isLoading = false,
-                    error = e.message ?: "Unknown error occurred"
+                    error = ErrorHandler.getUserMessage(context, e)
                 )
             }
         }
@@ -91,7 +94,9 @@ class HomeViewModel(
                     reminderRepository.uncomplete(id)
                 }
             } catch (e: Exception) {
-                // Handle error silently for now
+                _uiState.value = _uiState.value.copy(
+                    error = ErrorHandler.getUserMessage(context, e)
+                )
             }
         }
     }
@@ -104,8 +109,9 @@ class HomeViewModel(
             try {
                 completeReminderUseCase.execute(id)
             } catch (e: Exception) {
-                // Handle error silently for now
-                // TODO: Show user-friendly error message
+                _uiState.value = _uiState.value.copy(
+                    error = ErrorHandler.getUserMessage(context, e)
+                )
             }
         }
     }
@@ -118,7 +124,9 @@ class HomeViewModel(
             try {
                 reminderRepository.uncomplete(id)
             } catch (e: Exception) {
-                // Handle error silently for now
+                _uiState.value = _uiState.value.copy(
+                    error = ErrorHandler.getUserMessage(context, e)
+                )
             }
         }
     }
@@ -131,9 +139,18 @@ class HomeViewModel(
             try {
                 reminderRepository.delete(id)
             } catch (e: Exception) {
-                // Handle error silently for now
+                _uiState.value = _uiState.value.copy(
+                    error = ErrorHandler.getUserMessage(context, e)
+                )
             }
         }
+    }
+    
+    /**
+     * Clear error message
+     */
+    fun clearError() {
+        _uiState.value = _uiState.value.copy(error = null)
     }
     
     /**

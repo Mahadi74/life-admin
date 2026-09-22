@@ -4,13 +4,20 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <group android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:translateX="27"
-        android:translateY="27">
-        <!-- Simple checkmark icon -->
+    <!-- Life Admin Logo: Alarm bell with checkmark -->
+    <group android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:translateX="16.2"
+        android:translateY="16.2">
+        
+        <!-- Bell outline -->
         <path
             android:fillColor="#FFFFFF"
-            android:pathData="M44,68L32,56l4.8,-4.8L44,58.4l24.8,-24.8L73.6,38z"/>
+            android:pathData="M54,68C56.2,68 58,66.2 58,64L50,64C50,66.2 51.8,68 54,68ZM66,52L66,42C66,35.4 62.4,29.8 56.4,28.4L56.4,27C56.4,25.6 55.4,24 54,24C52.6,24 51.6,25.6 51.6,27L51.6,28.4C45.6,29.8 42,35.4 42,42L42,52L38,56L38,58L70,58L70,56L66,52ZM62,54L46,54L46,42C46,36.6 49.6,32 54,32C58.4,32 62,36.6 62,42L62,54Z"/>
+        
+        <!-- Checkmark inside bell -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M52,48L49,45L47,47L52,52L61,43L59,41Z"/>
     </group>
 </vector>
